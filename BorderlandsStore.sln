@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BorderlandsStore.UI.MVC", "BorderlandsStore.UI.MVC\BorderlandsStore.UI.MVC.csproj", "{29F36469-D29C-48F2-99E8-B8F0F4B22E06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BorderlandsStore.DATA.EF", "BorderlandsStore.DATA.EF\BorderlandsStore.DATA.EF.csproj", "{9DFFF39A-173F-449B-B5F0-B3BCD4784DDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29F36469-D29C-48F2-99E8-B8F0F4B22E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29F36469-D29C-48F2-99E8-B8F0F4B22E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29F36469-D29C-48F2-99E8-B8F0F4B22E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29F36469-D29C-48F2-99E8-B8F0F4B22E06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DFFF39A-173F-449B-B5F0-B3BCD4784DDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DFFF39A-173F-449B-B5F0-B3BCD4784DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DFFF39A-173F-449B-B5F0-B3BCD4784DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DFFF39A-173F-449B-B5F0-B3BCD4784DDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3E34E1C6-962F-4FB2-8368-7C68EE1713D9}
+	EndGlobalSection
+EndGlobal
