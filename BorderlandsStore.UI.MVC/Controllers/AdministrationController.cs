@@ -410,5 +410,10 @@ namespace BorderlandsStore.UI.MVC.Controllers//Update namespace
         }
         #endregion
         #endregion
+
+        public IActionResult UserPortal()
+        {
+            return View();
+        }
     }
 }
