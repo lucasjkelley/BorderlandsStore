@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BorderlandsStore.DATA.EF//.Metadata
+namespace BorderlandsStore.DATA.EF.Models//.Metadata
 {
     //internal class Partials
     //{

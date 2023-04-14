@@ -1,15 +1,15 @@
 ﻿@model BorderlandsStore.DATA.EF.Models.Category
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit " + Model.Category1;
 }
-
-<h1>Edit</h1>
-
-<h4>Category</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<h1 class="text-white text-center">@ViewData["Title"]</h1>
+
+@*<h4>Category</h4>*@
+<hr />
+<div class="row text-white">
+    <div class="col-md-4 offset-4 bg-black bg-opacity-50">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CategoryId" />
@@ -18,22 +18,26 @@
                 <input asp-for="Category1" class="form-control" />
                 <span asp-validation-for="Category1" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="CategoryDescription" class="control-label"></label>
-                <input asp-for="CategoryDescription" class="form-control" />
+                <textarea asp-for="CategoryDescription" class="form-control"></textarea>
                 <span asp-validation-for="CategoryDescription" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
         </form>
+        <br />
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
+<br />
+<div class="form-group text-center">
+    |<input type="submit" value=" Save " class="btn btn-primary" /> |
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a> |
 </div>
+<br />
+<br />
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

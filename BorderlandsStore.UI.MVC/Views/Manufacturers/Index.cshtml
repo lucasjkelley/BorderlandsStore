@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<BorderlandsStore.DATA.EF.Models.Manufacturer>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Manufacturers";
 }
-
-<h1>Index</h1>
+<hr />
+<h1 class="text-white">@ViewData["Title"]</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table bg-black bg-opacity-50 text-white">
     <thead>
         <tr>
             <th>
@@ -32,7 +32,7 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ManufacturerId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ManufacturerId">Details</a> |
+                @*<a asp-action="Details" asp-route-id="@item.ManufacturerId">Details</a> |*@
                 <a asp-action="Delete" asp-route-id="@item.ManufacturerId">Delete</a>
             </td>
         </tr>
