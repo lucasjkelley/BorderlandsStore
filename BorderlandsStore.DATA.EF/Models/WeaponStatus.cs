@@ -11,6 +11,6 @@ namespace BorderlandsStore.DATA.EF.Models
         public int OnOrder { get; set; }
         public bool Discontinued { get; set; }
 
-        public virtual Weapon Weapon { get; set; } = null!;
+        public virtual Weapon? Weapon { get; set; }
     }
 }

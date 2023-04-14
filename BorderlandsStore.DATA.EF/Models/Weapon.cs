@@ -14,9 +14,9 @@ namespace BorderlandsStore.DATA.EF.Models
         public int ManufacturerId { get; set; }
         public string? WeaponImage { get; set; }
 
-        public virtual Category Category { get; set; } = null!;
+        public virtual Category? Category { get; set; } // made nullable as a FK
         public virtual Element? Element { get; set; }
-        public virtual Manufacturer Manufacturer { get; set; } = null!;
+        public virtual Manufacturer? Manufacturer { get; set; } 
         public virtual WeaponStatus? WeaponStatus { get; set; }
     }
 }

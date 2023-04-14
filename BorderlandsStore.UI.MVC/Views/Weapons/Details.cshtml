@@ -1,15 +1,15 @@
 ﻿@model BorderlandsStore.DATA.EF.Models.Weapon
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Model.Name + " Details";
 }
 
-<h1>Details</h1>
+<h1 class="text-white">@ViewData["Title"]</h1>
 
 <div>
-    <h4>Weapon</h4>
+    <h4 class="text-white">@Model.Category.Category1</h4>
     <hr />
-    <dl class="row">
+    <dl class="row bg-black bg-opacity-50 rounded-3 text-white">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -55,6 +55,7 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.WeaponId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    | <a asp-action="Index" class="btn btn-primary">Back to List</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.WeaponId" class="btn btn-secondary">Edit</a> |
 </div>
+<br />

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BorderlandsStore.DATA.EF.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BorderlandsStore.UI.MVC.Controllers
 {
@@ -23,6 +24,13 @@ namespace BorderlandsStore.UI.MVC.Controllers
         {
             var borderlandsStoreContext = _context.Weapons.Include(w => w.Category).Include(w => w.Element).Include(w => w.Manufacturer);
             return View(await borderlandsStoreContext.ToListAsync());
+        }
+        public async Task<IActionResult> TiledProducts()
+        {
+            var products = _context.Weapons
+
+                    .Include(p => p.Category).Include(p => p.Manufacturer).Include(p => p.WeaponStatus);
+            return View(await products.ToListAsync());
         }
 
         // GET: Weapons/Details/5

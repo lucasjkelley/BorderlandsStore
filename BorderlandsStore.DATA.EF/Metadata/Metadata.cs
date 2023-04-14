@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace BorderlandsStore.DATA.EF//.Metadata
+namespace BorderlandsStore.DATA.EF.Models//.Metadata
 {
     //internal class Metadata
     //{

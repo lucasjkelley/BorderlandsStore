@@ -3,13 +3,13 @@
 @{
     ViewData["Title"] = "Create";
 }
-
-<h1>Create</h1>
-
-<h4>Weapon</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<h1 class="text-white text-center">Create New Weapon</h1>
+
+@*<h4>Weapon</h4>*@
+<hr />
+<div class="row text-white">
+    <div class="col-md-4 offset-4 bg-black bg-opacity-50">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <textarea asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -43,17 +43,18 @@
                 <label asp-for="WeaponImage" class="control-label"></label>
                 <input asp-for="WeaponImage" class="form-control" />
                 <span asp-validation-for="WeaponImage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+            </div>            
         </form>
+        <br />
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
+<br />
+<div class="form-group text-center">
+    |<input type="submit" value=" Create " class="btn btn-primary" /> |
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a> |
 </div>
+<br />
+<br />
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
