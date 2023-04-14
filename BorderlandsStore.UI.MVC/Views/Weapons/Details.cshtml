@@ -5,57 +5,58 @@
 }
 
 <h1 class="text-white">@ViewData["Title"]</h1>
+<h4 class="text-white">@Model.Category.Category1</h4>
+<img src="~/assets/img/Weapon_Pics/@Model.WeaponImage" />
 
 <div>
-    <h4 class="text-white">@Model.Category.Category1</h4>
     <hr />
     <dl class="row bg-black bg-opacity-50 rounded-3 text-white">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Price)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Price)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.WeaponImage)
+        @* <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.WeaponImage)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.WeaponImage)
-        </dd>
-        <dt class = "col-sm-2">
+        @Html.DisplayFor(model => model.WeaponImage)
+        </dd>*@
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Category)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Category.Category1)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Element)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Element.ElementType)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Manufacturer)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Manufacturer.Location)
         </dd>
     </dl>
 </div>
 <div>
-    | <a asp-action="Index" class="btn btn-primary">Back to List</a> |
+    | <a asp-action="TiledProducts" class="btn btn-primary">Back to List</a> |
     <a asp-action="Edit" asp-route-id="@Model?.WeaponId" class="btn btn-secondary">Edit</a> |
 </div>
 <br />

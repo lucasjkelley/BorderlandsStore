@@ -20,7 +20,9 @@
 <body>
     <header>
         <h1 class="site-heading text-center text-faded d-none d-lg-block">
-            <span class="site-heading-upper text-primary mb-3">Caveat Emptor!</span>
+            <div class="text-center bg-dark rounded-pill mb-3">
+                <span class="site-heading-upper text-primary my-2">Caveat Emptor!</span>
+            </div>
             <span class="site-heading-lower">The Borderlands Store</span>
         </h1>
     </header>
@@ -32,19 +34,27 @@
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" asp-action="Index" asp-controller="Home">Home</a></li>
                     <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" asp-action="About" asp-controller="Home">About</a></li>
-                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" asp-action="Index" asp-controller="Weapons">Store</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" asp-action="TiledProducts" asp-controller="Weapons">Store</a></li>
                     @*<li class="nav-item px-lg-4"><a class="nav-link text-uppercase" asp-action="Products" asp-controller="Home">Products</a></li>*@
                     <li class="nav-item dropdown px-lg-4">
                         @*TODO need to revisit this dropdown menu *@
-                        <a class="nav-link text-uppercase dropdown-toggle text-uppercase" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><span class="nav-label">User Portal</span> <span class="caret"></span></a>
+                        <a class="nav-link text-uppercase dropdown-toggle text-uppercase" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><span class="nav-label">Info</span> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a asp-action="ListUsers" asp-controller="Administration" class="dropdown-item">Users</a></li>
-                            <li><a asp-action="ListRoles" asp-controller="Administration" class="dropdown-item">Roles</a></li>
                             <li><a asp-action="Index" asp-controller="Manufacturers" class="dropdown-item">Manufacturers</a></li>
                             <li><a asp-action="Index" asp-controller="Categories" class="dropdown-item">Categories</a></li>
                             <li><a asp-action="Index" asp-controller="Elements" class="dropdown-item">Elementals</a></li>
                             <li><a asp-action="Index" asp-controller="Weapons" class="dropdown-item">Weapons</a></li>
-                            @*<li><a asp-action="Index" asp-controller="WeaponStatus" class="dropdown-item">Weapon Status</a></li>*@
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown px-lg-4">
+                        <a class="nav-link text-uppercase dropdown-toggle text-uppercase" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><span class="nav-label">User Portal</span> <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-action="ListUsers" asp-controller="Administration" class="dropdown-item">Users</a></li>
+                            <li><a asp-action="ListRoles" asp-controller="Administration" class="dropdown-item">Roles</a></li>
+                            @*<li><a asp-action="Index" asp-controller="Manufacturers" class="dropdown-item">Manufacturers</a></li>
+                            <li><a asp-action="Index" asp-controller="Categories" class="dropdown-item">Categories</a></li>
+                            <li><a asp-action="Index" asp-controller="Elements" class="dropdown-item">Elementals</a></li>
+                            <li><a asp-action="Index" asp-controller="Weapons" class="dropdown-item">Weapons</a></li>*@
                         </ul>
                     </li>
                 </ul>

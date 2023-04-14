@@ -31,7 +31,7 @@
 
             @foreach (var item in Model)
             {
-                <div class="col-sm-6 col-md-4 col-lg-4 text-white">
+                <div class="col-sm-6 col-md-4 col-lg-4">
                     <div class="box">
                         <div class="option_container">
                             <div class="options">
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="img-box">
-                            <img src="~/assets/img/Borderlands Store Pics/Veritas.JPG" alt="@item.Name">
+                            <img src="~/assets/img/Weapon_Pics/@item.WeaponImage" alt="@item.Name">
                         </div>
                         <div class="detail-box">
                             <h5>
@@ -62,76 +62,3 @@
 
     </div>
 </section>
-
-
-
-
-
-
-
-
-
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WeaponImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Element)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Manufacturer)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WeaponImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Category1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Element.ElementType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Manufacturer.Location)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.WeaponId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.WeaponId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.WeaponId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
