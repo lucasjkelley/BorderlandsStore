@@ -3,13 +3,20 @@
 @{
     ViewData["Title"] = "Weapons";
 }
-
-<h1 class="text-white">@ViewData["Title"]</h1>
-
-<p class="text-center">
-    <a asp-action="Create">Create New Weapon</a> | 
+<hr />
+<h1 class="text-white text-center">@ViewData["Title"]</h1>
+<hr />
+<p class="text-end">
+    @if (User.IsInRole("Admin"))
+    {
+        <span>
+            <a asp-action="Create">Create New Weapon</a> |
+        </span>
+    }
     <a asp-action="TiledProducts">Tiled View</a>
 </p>
+
+
 <table class="table bg-black bg-opacity-50 text-white">
     <thead>
         <tr>
@@ -53,7 +60,7 @@
             </td>
             <td>
                 @*@Html.DisplayFor(modelItem => item.WeaponImage)*@
-                <img src="~/assets/img/Weapon_Pics/@item.WeaponImage" class="img-fluid img-thumbnail" style="max-height: 100px;" alt="#" />
+                <img src="~/assets/img/Weapon_Pics/t_@item.WeaponImage" class="img-fluid img-thumbnail" style="max-height: 100px;" alt="@item.Description" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Category.Category1)
@@ -73,3 +80,11 @@
 }
     </tbody>
 </table>
+
+@section scripts {
+
+    <script>
+        let table = new DataTable('.table');
+    </script>
+
+  }

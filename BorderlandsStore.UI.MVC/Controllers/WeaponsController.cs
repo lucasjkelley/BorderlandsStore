@@ -9,6 +9,7 @@ using BorderlandsStore.DATA.EF.Models;
 using Microsoft.AspNetCore.Authorization;
 using BorderlandsStore.UI.MVC.Utilities;
 using System.Drawing;
+using X.PagedList;
 
 namespace BorderlandsStore.UI.MVC.Controllers
 {
@@ -29,12 +30,55 @@ namespace BorderlandsStore.UI.MVC.Controllers
             var borderlandsStoreContext = _context.Weapons.Include(w => w.Category).Include(w => w.Element).Include(w => w.Manufacturer);
             return View(await borderlandsStoreContext.ToListAsync());
         }
-        public async Task<IActionResult> TiledProducts()
+        public async Task<IActionResult> TiledProducts(string searchTerm, int categoryId = 0, int page = 1)
         {
-            var products = _context.Weapons
+            int pageSize = 6;
 
-                    .Include(p => p.Category).Include(p => p.Manufacturer).Include(p => p.WeaponStatus);
-            return View(await products.ToListAsync());
+            var products = _context.Weapons
+                    .Include(p => p.Category)
+                    .Include(p => p.Manufacturer).ToList();
+
+            #region Category Filter
+
+
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Category1");
+
+            ViewBag.Category = 0;
+
+            if (categoryId != 0)
+            {
+                products = products.Where(p => p.CategoryId == categoryId).ToList();
+
+                ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Category1", categoryId);
+
+                ViewBag.Category = categoryId;
+
+            }
+
+            #endregion
+
+            #region Search Filter
+                        
+            if (!String.IsNullOrEmpty(searchTerm))
+            {
+                products = products.Where(p =>
+                    p.Name.ToLower().Contains(searchTerm.ToLower()) ||
+                    p.Manufacturer.Manufacturer1.ToLower().Contains(searchTerm.ToLower()) ||
+                    p.Category.Category1.ToLower().Contains(searchTerm.ToLower()) ||
+                    p.Description.ToLower().Contains(searchTerm.ToLower())).ToList();
+
+                ViewBag.NbrResults = products.Count;
+                ViewBag.SearchTerm = searchTerm;
+            }
+            else
+            {
+                ViewBag.NbrResults = null;
+                ViewBag.SearchTerm = null;
+            }
+            #endregion
+
+
+            return View(products.ToPagedList(page, pageSize));
         }
 
         // GET: Weapons/Details/5
@@ -79,42 +123,25 @@ namespace BorderlandsStore.UI.MVC.Controllers
                 #region File Upload - CREATE w/ Image Utility
                 if (weapon.ImageFile != null)
                 {
-                    // process file
-
-                    // Check the file type
-                    // - retrieve the extension of the uploaded file
+                    
                     string ext = Path.GetExtension(weapon.ImageFile.FileName);
 
-                    // - Create a list of valid extensions
                     string[] validExts = { ".jpg", ".jpeg", ".gif", ".png" };
 
-                    // - Check the file extension against the list of valid extensions
                     if (validExts.Contains(ext.ToLower()) && weapon.ImageFile.Length < 4_194_303)
                     {
-                        // Generate a unique filename
+                    
                         weapon.WeaponImage = Guid.NewGuid() + ext;
 
-                        // Save our file to the web server (here it's saved to wwwroot/images
-                        // - retrieve the path to the webroot
                         string webRootPath = _webHostEnvironment.WebRootPath;
-
-                        // - create a variable for the full image path
+                                            
                         string fullImagePath = webRootPath + "/asset/img/Weapon_Pics/";
 
-                        // Create a MemoryStream to read the image into our web server's memory
                         using (var memoryStream = new MemoryStream())
                         {
                             await weapon.ImageFile.CopyToAsync(memoryStream);
                             using (var img = Image.FromStream(memoryStream))
                             {
-                                // now, send the image to the ImageUtility for resizing and saving
-                                // need 5 arguments for the utility to resize our image...
-                                // 1) (int) maximum image size
-                                // 2) (int) maximum thumbnamil size
-                                // 3) (string) full path where the file will be saved
-                                // 4) (Image) an image
-                                // 5) (string) filename
-
                                 int maxImageSize = 500;
                                 int maxThumbSize = 100;
 
@@ -125,9 +152,6 @@ namespace BorderlandsStore.UI.MVC.Controllers
                 }
                 else
                 {
-                    // assign a default image
-                    // If no image was uploaded, assign a default filename
-                    // Will also need to download a default image and name it 'noimage.png' -> place it in the wwroot/images
                     weapon.WeaponImage = "noimage.png";
                 }
                 #endregion

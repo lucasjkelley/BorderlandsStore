@@ -90,10 +90,9 @@
 
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <a href="javascript:void(0)" class="btn btn-primary">
+                    <a asp-action="SubmitOrder" asp-controller="ShoppingCartController" class="btn btn-primary">
                         Submit Order
                     </a>
-                    <!-- TODO: Update Submit Order Button-->
                 }
                 else
                 {

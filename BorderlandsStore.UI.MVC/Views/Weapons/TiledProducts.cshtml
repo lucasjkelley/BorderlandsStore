@@ -1,4 +1,9 @@
-﻿@model IEnumerable<BorderlandsStore.DATA.EF.Models.Weapon>
+﻿@model IPagedList<BorderlandsStore.DATA.EF.Models.Weapon>
+
+
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+
 
 @{
     ViewData["Title"] = "Tiled Products";
@@ -6,22 +11,52 @@
 <hr />
 <h1 class="text-white text-center">Weapons</h1>
 
-<p class="text-center">
-    <a asp-action="Create">Create New Weapon</a> |
-    <a asp-action="Index">List View</a>
-</p>
+
 <hr />
 <section class="product_section layout_padding">
-    <div class="container">        
+
+    <div class="container text-white">
+        <div class="row">
+
+            <div class="offset-4 col-sm-4">
+                <form asp-action="TiledProducts" method="get">
+
+                    <label for="categoryId" class="control-label text-center d-block">Filter by Category</label>
+                    <select name="categoryId" class="form-control text-center mb-3" asp-items="ViewBag.CategoryId">
+                        <option value="0">[Choose a Category]</option>
+                    </select>
+
+                    <input type="text" name="searchTerm" class="form-control text-center mb-3" placeholder="Search Weapons..." />
+                    <input type="submit" value="Go" class="btn btn-primary text-center w-50 d-block" />
+
+                </form>
+                @if (ViewBag.NbrResults != null)
+                {
+                    <p class="mt-5 p-2 alert-warning text-center">
+                        Showing @ViewBag.NbrResults result@(ViewBag.NbrResults > 1 ? "s" : "") for '@ViewBag.SearchTerm'...
+                    </p>
+                }
+
+            </div>
+                <p class="text-end">
+                @if (User.IsInRole("Admin"))
+                {
+                    <span>
+                    <a asp-action="Create">Create New Weapon</a> |
+                    </span>
+                }
+                    <a asp-action="Index">List View</a>
+                </p>
+        </div>
         <div class="row">
 
             @foreach (var item in Model)
             {
-                <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="col-sm-6 col-md-4 col-lg-4 text-black">
                     <div class="box">
                         <div class="option_container">
                             <div class="options">
-                                <a asp-action="Details" asp-controller="Products" asp-route-id="@item.WeaponId" class="option1">
+                                <a asp-action="Details" asp-controller="Weapons" asp-route-id="@item.WeaponId" class="option1">
                                     @item.Name
                                 </a>
                                 <a asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-id="@item.WeaponId" class="option2">
@@ -46,5 +81,29 @@
 
         </div>
 
+        @* PAGE COUNTER *@
+        <div class="row mt-5">
+            <div class="w-50 mx-auto text-center">
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+            </div>
+            <div class="w-100">
+                @Html.PagedListPager(
+                Model,
+                page => Url.Action("TiledProducts",
+                new {page, searchTerm = ViewBag.SearchTerm, categoryId = ViewBag.Category})
+                )
+            </div>
+        </div>
+
+
+
+        
+
+        <div class="btn btn-secondary btn-lg">
+            <a asp-action="TiledProducts">
+                View All weapons
+            </a>
+        </div>
+        
     </div>
 </section>
