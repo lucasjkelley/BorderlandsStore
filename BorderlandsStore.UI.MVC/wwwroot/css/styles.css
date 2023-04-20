@@ -359,7 +359,7 @@ button,
 select,
 optgroup,
 textarea {
-    margin: 0;
+    margin: auto;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
@@ -2202,6 +2202,19 @@ progress {
         -webkit-overflow-scrolling: touch;
     }
 }
+
+.dataTables_wrapper {
+    color: white;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: #ffffff;
+    padding: 4px;
+}
+
 
 .form-label {
     margin-bottom: 0.5rem;
@@ -4257,6 +4270,10 @@ textarea.form-control-lg {
     color: #6c757d;
     pointer-events: none;
     cursor: default;
+}
+
+.nav-link span box-icon {
+    color: white;
 }
 
 .nav-tabs {
