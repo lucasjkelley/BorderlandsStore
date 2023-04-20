@@ -12,21 +12,7 @@
 </p>
 <hr />
 <section class="product_section layout_padding">
-    <div class="container">
-        @*<div class="heading_container heading_center">
-            <h2>
-                Our <span>products</span>
-            </h2>
-        </div>*@
-
-        @*<p align="center">
-            @if (User.IsInRole("Admin"))
-            {
-                <a asp-action="Create">Add New Gadget</a>  <span>|</span>
-            }
-            <a asp-action="Index">Table View</a>
-        </p>*@
-
+    <div class="container">        
         <div class="row">
 
             @foreach (var item in Model)
@@ -35,11 +21,11 @@
                     <div class="box">
                         <div class="option_container">
                             <div class="options">
-                                <a asp-action="Details" asp-asp-controller="Products" asp-route-id="@item.WeaponId" class="option1">
+                                <a asp-action="Details" asp-controller="Products" asp-route-id="@item.WeaponId" class="option1">
                                     @item.Name
                                 </a>
-                                <a href="" class="option2">
-                                    Buy Now
+                                <a asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-id="@item.WeaponId" class="option2">
+                                    Add To Cart
                                 </a>
                             </div>
                         </div>

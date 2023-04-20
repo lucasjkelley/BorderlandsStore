@@ -112,6 +112,9 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 h1, .h1 {
     font-size: calc(1.375rem + 1.5vw);
 }
+.h1 span{
+    font-size: small;
+}
 
 @media (min-width: 1200px) {
     h1, .h1 {
@@ -308,6 +311,7 @@ figure {
 img,
 svg {
     vertical-align: middle;
+    ;
 }
 
 table {
@@ -4232,7 +4236,7 @@ textarea.form-control-lg {
 }
 
 .nav-link {
-    display: block;
+    /*display: block;*/
     padding: 0.5rem 1rem;
     color: #e6a756;
     text-decoration: none;
@@ -12321,3 +12325,4 @@ p {
             background-color: transparent;
             color: #f7972c;
         }
+
