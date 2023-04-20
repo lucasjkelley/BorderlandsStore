@@ -1,0 +1,114 @@
+﻿@model Dictionary<int, BorderlandsStore.UI.MVC.Models.CartItemViewModel>
+
+@{
+    ViewData["Title"] = "Cart";
+    decimal? cartTotal = 0;
+}
+<hr />
+<section class="product_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center text-white">
+            <h2>
+                Your Loot Bag
+            </h2>
+            <p align="center">
+                <a asp-action="TiledProducts" asp-controller="Weapons" class="btn btn-info">
+                    Add more Weapons!
+                </a>
+            </p>
+
+        </div>
+
+        @if (Model.Count == 0)
+        {
+            <p class="alert alert-warning text-center">
+                @ViewBag.Message
+            </p>
+        }
+        else
+        {
+            <table class="table bg-black bg-opacity-50 rounded-3 text-white">
+                <thead>
+                    <tr>
+                        <th>Weapon</th>
+                        <th>Quantity</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th></th> @*Intentionally left blank for actions (eg. 'remove from cart')*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img src="~/assets/img/Weapon_Pics/t_@item.Value.Weapon.WeaponImage" alt="@item.Value.Weapon.Name" />
+                            </td>
+                            <td>
+                                <p>
+                                    <form asp-action="UpdateCart">
+
+                                        <input type="hidden" name="weaponId" value="@item.Key" />
+                                        <input type="text" name="qty" value="@item.Value.Qty" class="form-control d-block mx-auto text-center w-50" />
+                                        <input type="submit" value="Update Cart" class="btn btn-primary btn-sm" />
+
+                                    </form>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    @item.Value.Weapon.Name
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    @string.Format($"{item.Value.Weapon.Price:c}")
+                                </p>
+                            </td>
+                            <td>
+                                @{                                   
+                                    decimal? lineTotal = item.Value.Qty * item.Value.Weapon.Price; 
+                                    cartTotal += lineTotal;
+                                }
+                                @String.Format($"{lineTotal:c}")
+                            </td>
+                            <td>
+                                <a a asp-action="RemoveFromCart" asp-controller="ShoppingCart" asp-route-id="@item.Key" class="btn btn-danger">
+                                    Remove from Cart
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="alert alert-success text-center">
+                <p>
+                    Your total before taxes and shipping is @string.Format($"{cartTotal:c}").
+                </p>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="javascript:void(0)" class="btn btn-primary">
+                        Submit Order
+                    </a>
+                    <!-- TODO: Update Submit Order Button-->
+                }
+                else
+                {
+                    <p>
+                        To place this order, you must be <a asp-area ="Identity" asp-page="/Account/Login">logged in.</a>
+                    </p>
+                    <button disabled="disabled" class="btn btn-primary">
+                        Submit Order
+                    </button>
+                }
+
+            </div>
+
+
+        }
+
+    </div>
+</section>
