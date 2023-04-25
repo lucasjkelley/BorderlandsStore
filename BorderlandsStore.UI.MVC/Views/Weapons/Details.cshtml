@@ -56,7 +56,14 @@
     </dl>
 </div>
 <div>
-    | <a asp-action="TiledProducts" class="btn btn-primary">Back to List</a> |
-    <a asp-action="Edit" asp-route-id="@Model?.WeaponId" class="btn btn-secondary">Edit</a> |
+    | <a asp-action="TiledProducts" class="btn btn-primary">Back to List</a> 
+    @if (User.IsInRole("Admin"))
+    {
+    <span>
+    |<a asp-action="Edit" asp-route-id="@Model?.WeaponId" class="btn btn-secondary">Edit</a> |
+
+    </span>
+        
+    }
 </div>
 <br />

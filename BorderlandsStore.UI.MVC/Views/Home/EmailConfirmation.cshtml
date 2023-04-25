@@ -1,0 +1,43 @@
+﻿@model BorderlandsStore.UI.MVC.Models.ContactViewModel
+
+<hr />
+<main id="main">
+    <!-- ======= Contact Section ======= -->
+    <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        <div class="container">
+
+            <div class="row text-center bg-black bg-opacity-50 rounded-3 text-white">
+
+                <div class="info-box">
+                    <i class="bx bx-check-circle"></i>
+                    <h3>Message Sent!</h3>
+                    <p>
+                        Thank you for contacting us! We will get to it right away, @Model.Name, in the next [insert realistic expection here] business days.
+                    </p>
+
+                    <br />
+
+                    <div class="offset-3 col-md-6">
+                        <p>
+                            You sent the following garbage, er, message on
+                            @DateTime.Now.Date.ToShortDateString() at
+                            @DateTime.Now.ToShortTimeString() :
+                        </p>
+                    </div>
+
+                    <br />
+
+                    <div class="offset-3 col-md-6">
+                        <p>
+                            <em>@Html.Raw(Model.Message)</em>
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Confirmation Section -->
+</main>
+<!-- End #main -->

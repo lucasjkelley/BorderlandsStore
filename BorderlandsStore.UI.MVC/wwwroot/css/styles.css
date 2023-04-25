@@ -625,8 +625,9 @@ progress {
     }
 
 .img-fluid {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
+    border: 10px solid #fff;
 }
 
 .img-thumbnail {
@@ -2247,7 +2248,7 @@ progress {
 }
 
 .form-control {
-    display: block;
+    display: inline-block;
     width: 100%;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
@@ -12343,3 +12344,9 @@ p {
             color: #f7972c;
         }
 
+
+
+#contact form {
+    display: inline-block;
+    margin: auto;
+}
