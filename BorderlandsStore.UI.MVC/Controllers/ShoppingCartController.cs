@@ -116,28 +116,28 @@ namespace BorderlandsStore.UI.MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        //public async Task<IActionResult> SubmitOrder()
-        //{
-        //    string? userId = (await _userManager.GetUserAsync(HttpContext.User))?.Id;
+        public IActionResult SubmitOrder()
+        {
+            //string? userId = (await _userManager.GetUserAsync(HttpContext.User))?.Id;
 
-        //    UserDetail ud = _context.UserDetails.Find(userId);
+            //UserDetail ud = _context.UserDetails.Find(userId);
 
-        //    Order o = new Order()
-        //    {
-        //        OrderDate = DateTime.Now,
-        //        UserId = userId,
-        //        ShipCity = ud.City,
-        //        ShipToName = ud.FullName,
-        //        ShipState = ud.State,
-        //        ShipZip = ud.Zip
-        //    };
+            //Order o = new Order()
+            //{
+            //    OrderDate = DateTime.Now,
+            //    UserId = userId,
+            //    ShipCity = ud.City,
+            //    ShipToName = ud.FullName,
+            //    ShipState = ud.State,
+            //    ShipZip = ud.Zip
+            //};
 
-        //    _context.Orders.Add(o);
+            //_context.Orders.Add(o);
+
+            return View();
 
 
-
-
-        //}
+        }
 
     }
 }

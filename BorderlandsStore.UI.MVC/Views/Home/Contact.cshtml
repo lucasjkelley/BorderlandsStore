@@ -1,0 +1,76 @@
+﻿@model BorderlandsStore.UI.MVC.Models.ContactViewModel
+<hr />
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<main id="main">
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact text-white">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <h2>Contact</h2>
+                <p>
+                    Send us a message with any questions or concerns and they will be expedited to the local Skag Ranch and they will be fed to the animals.<br /> Thank you for doing your part to keep our local fauna flourishing!
+                </p>
+            </div>           
+
+                <div class="offset-2 col-lg-8 mt-5 mt-lg-0">
+                    <form asp-action="Contact"
+                          method="post"
+                          role="form"
+                          class="email-form">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <input asp-for="Name"
+                                       class="form-control"
+                                       id="name"
+                                       placeholder="Your Name"
+                                       required />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 form-group mt-3 mt-md-0">
+                                <input asp-for="Email"
+                                       class="form-control"
+                                       id="email"
+                                       placeholder="Your Email"
+                                       required />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input asp-for="Subject"
+                                   class="form-control"
+                                   id="subject"
+                                   placeholder="Subject"
+                                   required />
+                            <span asp-validation-for="Subject" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mt-3">
+                            <textarea asp-for="Message"
+                                      class="form-control"
+                                      rows="5"
+                                      placeholder="Message"
+                                      required></textarea>
+                            <span asp-validation-for="Message" class="text-danger"></span>
+                        </div>
+
+                        <br />
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Contact Section -->
+</main>
+<!-- End #main -->
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
