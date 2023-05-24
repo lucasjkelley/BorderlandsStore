@@ -362,5 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-# Git ignore
-/appsettings.json
+# Protecting Sensitive Info 
+/BorderlandsStore.UI.MVC/appsettings.json
