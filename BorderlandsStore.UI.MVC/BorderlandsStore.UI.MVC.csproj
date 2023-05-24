@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-BorderlandsStore.UI.MVC-820e5f93-71a4-464b-9268-80b80a6b6257</UserSecretsId>
+	  <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
   <ItemGroup>

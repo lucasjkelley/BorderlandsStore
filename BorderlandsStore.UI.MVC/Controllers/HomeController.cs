@@ -35,7 +35,8 @@ namespace BorderlandsStore.UI.MVC.Controllers
         public IActionResult Store()
         {
             return View();
-        } public IActionResult EmailConfirmation()
+        } 
+        public IActionResult EmailConfirmation()
         {
             return View();
         }
